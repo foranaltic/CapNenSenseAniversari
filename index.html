@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organitzador de Festes d'Aniversari</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            background-color: #ff69b4;
+            color: white;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+            max-width: 600px;
+            width: 100%;
+        }
+        .form-section, .party-list {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #ff69b4;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff1493;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Organitzador de Festes d'Aniversari</h1>
+    </header>
+    <main>
+        <section class="form-section">
+            <h2>Inscripció d'Usuari</h2>
+            <form id="registration-form">
+                <label for="parent-name">Nom del Pare/Mare:</label>
+                <input type="text" id="parent-name" name="parent-name" required>
+                
+                <label for="child-name">Nom del Nen/a:</label>
+                <input type="text" id="child-name" name="child-name" required>
+                
+                <label for="child-age">Edat del Nen/a:</label>
+                <input type="number" id="child-age" name="child-age" required>
+                
+                <label for="location">Ubicació:</label>
+                <input type="text" id="location" name="location" required>
+                
+                <button type="submit">Registrar-se</button>
+            </form>
+        </section>
+        <section class="form-section">
+            <h2>Organitzar una Festa</h2>
+            <form id="party-form">
+                <label for="organizer-name">Nom del Pare/Mare Organitzador:</label>
+                <input type="text" id="organizer-name" name="organizer-name" required>
+                
+                <label for="organizer-child-name">Nom del Nen/a:</label>
+                <input type="text" id="organizer-child-name" name="organizer-child-name" required>
+                
+                <label for="organizer-child-age">Edat del Nen/a:</label>
+                <input type="number" id="organizer-child-age" name="organizer-child-age" required>
+                
+                <label for="party-date">Data de la Festa:</label>
+                <input type="date" id="party-date" name="party-date" required>
+                
+                <label for="party-location">Ubicació de la Festa:</label>
+                <input type="text" id="party-location" name="party-location" required>
+                
+                <button type="submit">Organitzar Festa</button>
+            </form>
+        </section>
+        <section class="party-list">
+            <h2>Festes Programades</h2>
+            <div id="parties">
+                <!-- Aquí es mostraran les festes organitzades -->
+            </div>
+        </section>
+    </main>
+    <script>
+        document.getElementById('registration-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Inscripció realitzada amb èxit!');
+            // Aquí afegiries el codi per enviar les dades a un servidor o guardar-les localment
+        });
+
+        document.getElementById('party-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const partyList = document.getElementById('parties');
+            const partyInfo = `
+                <div>
+                    <h3>${document.getElementById('organizer-child-name').value} (${document.getElementById('organizer-child-age').value} anys)</h3>
+                    <p>Data: ${document.getElementById('party-date').value}</p>
+                    <p>Ubicació: ${document.getElementById('party-location').value}</p>
+                </div>
+            `;
+            partyList.innerHTML += partyInfo;
+            alert('Festa organitzada amb èxit!');
+            // Aquí afegiries el codi per enviar les dades a un servidor o guardar-les localment
+        });
+    </script>
+</body>
+</html>
